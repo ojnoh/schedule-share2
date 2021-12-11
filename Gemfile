@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.5'
+gem 'rails', '~> 5.2.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -60,3 +60,19 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#ユーザーログイン
+gem 'devise'
+#CSSフレームワーク
+gem 'bootstrap', '~> 4.5'
+#jQueryを使えるようにする
+gem 'jquery-rails'
+#フォントアイコン
+gem 'font-awesome-sass'
+#ページネーション
+gem 'kaminari','~> 1.2.1'
+#画像投稿機能、画像サイズ調整
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+#ステータス、ジャンルをテーブルなしで保存
+gem 'enum_help'
