@@ -1,0 +1,44 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-6">
+      <%= form_with model:@event, local:true do |f| %>
+        <table class = "table table-borderless">
+          <tr>
+            <td><strong>開始日時</strong></td>
+            <td>開始</td>
+          </tr>
+          <tr>
+            <td><strong>終了日時</strong></td>
+            <td>終了</td>
+          </tr>
+          <tr>
+            <td>イベント名</td>
+            <td><%= f.text_field :name, autofocus: true, placeholder: "イベント名" %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= f.select :genre, Event.genres.keys.to_a %></td>
+          </tr>
+          <tr>
+            <td>詳細</td>
+            <td><%= f.text_area :body, autofocus: true, placeholder: "イベント詳細" %></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class = "col-5">
+        <table class = "table table-borderless">
+          <tr>
+            <td>達成の有無</td>
+            <td>多分</td>
+          </tr>
+          <tr>
+            <td>達成できなかった理由</td>
+            <td>なんでかな？</td>
+          </tr>
+        </table>
+        <%= f.submit "登録する", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
