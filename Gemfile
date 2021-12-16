@@ -76,3 +76,12 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 #ステータス、ジャンルをテーブルなしで保存
 gem 'enum_help'
+#フルカレンダーのダウンロード
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+
+#MySQLを利用するために必要なgem
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
