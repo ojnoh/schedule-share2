@@ -1,0 +1,42 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-10">
+
+      <div class = "row">
+        <h4 class = "col-4 text-center" style = "background-color:lightgray">会員情報の変更</h4>
+      </div>
+
+      <%= form_with model:@user, local:true do |f| %>
+      <table class = "table table-borderless">
+        <tbody>
+          <tr>
+            <td>名前</td>
+            <td><%= f.text_field :name, autofocus: true, placeholder: "名前" %></td>
+          </tr>
+          <tr>
+            <td>ニックネーム</td>
+            <td><%= f.text_field :nickname, autofocus: true, placeholder: "ニックネーム" %></td>
+          </tr>
+          <tr>
+            <td>画像</td>
+            <td><%# f.attachment_field :profile_image, autofocus: true, placeholder: "プロフィール画像" %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= f.select :genre, User.genres.keys.to_a %> 自身がどちらを中心に運動するかを選ぼう！</td>
+          </tr>
+          <tr>
+            <td>ポイント</td>
+            <td><%= f.text_area :point, size: "50x10", autofocus: true, placeholder: "自身がスケジュールを立てるとき基準にしているもの、気をつけていることを書き込んでみよう"  %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= f.submit "編集内容を保存する", class: "btn btn-success" %>
+      <% end %>
+
+    </div>
+    <div class = "col-5">
+
+    </div>
+  </div>
+</div>
