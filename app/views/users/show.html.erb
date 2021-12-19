@@ -6,7 +6,12 @@
     </div>
     <div class = "col-9">
       <h4>カレンダー</h4>
-
+      <%= month_calendar events: @events do |date, events| %>
+        <%= date.day %>
+        <% @events.each do |event| %>
+          <%= event.title, event %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

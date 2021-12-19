@@ -1,11 +1,11 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-6">
+    <div class = "col-5">
       <%= form_with model:@event, local:true do |f| %>
         <table class = "table table-borderless">
           <tr>
             <td><strong>開始日時</strong></td>
-            <td>開始</td>
+            <td><%= f.text_field :start, autofocus: true %></td>
           </tr>
           <tr>
             <td><strong>終了日時</strong></td>
@@ -30,11 +30,14 @@
         <table class = "table table-borderless">
           <tr>
             <td>達成の有無</td>
-            <td>多分</td>
+            <td>
+              <%= f.radio_button :record_flg, "false" %>達成できなかった
+              <%= f.radio_button :record_flg, "true" %>達成
+            </td>
           </tr>
           <tr>
             <td>達成できなかった理由</td>
-            <td>なんでかな？</td>
+            <td><%= f.text_area :reason, size: "50x8", autofocus: true %></td>
           </tr>
         </table>
         <%= f.submit "登録する", class: "btn btn-success" %>

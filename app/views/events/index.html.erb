@@ -1,0 +1,78 @@
+<p id="notice"><%= notice %></p>
+
+<h1>カレンダー</h1>
+<br>
+
+<div class = "row">
+  <div class = "col-md-4">
+  	<div>今後の予定一覧</div>
+    <table class = "table">
+      <thead class = "thead-light">
+        <tr>
+          <th>タイトル</th>
+          <th>日程</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @events.each do |events| %>
+          <tr>
+            <td><%= link_to events.title, event_path(current_user) %></td>
+            <td><%= events.start_time.strftime("%m-%d") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+
+    <%= form_with(model: @event, local: true) do |f| %>
+
+      <div class = "title">
+        <div>タイトル</div>
+        <%= f.text_field :title, autofocus: true %>
+      </div>
+
+      <div class = "genre">
+        <div>ジャンル</div>
+        <%= f.select :genre, Event.genres.keys.to_a %>
+      </div>
+
+
+      <div class = "body">
+        <div>内容</div>
+        <%= f.text_area :body, size: "50x8", autofocus: true %>
+      </div>
+
+        <div class = "start_time">
+        <div>時間</div>
+        <%= f.datetime_select :start_time, autofocus: true %>
+      </div>
+
+      <div class = "end_time">
+        <div>時間</div>
+        <%= f.datetime_select :end_time, autofocus: true %>
+      </div>
+
+      <div class = "submit">
+        <%= f.submit "登録する", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <br>
+
+
+    <div class="col-md-8">
+    <%= month_calendar events: @events do |date, events| %>
+      <%= date.day %>
+
+      <% events.each do |events| %>
+        <div>
+          <%= link_to events.title, class: "btn btn-success"%>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>
