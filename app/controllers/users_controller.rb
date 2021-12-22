@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!,except: [:top]
 
   def index
     @users = User.all
@@ -11,6 +12,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    if @user == current_user
+      render :edit
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update

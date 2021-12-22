@@ -11,6 +11,7 @@
         <tr>
           <th>タイトル</th>
           <th>日程</th>
+          <th>達成</th>
         </tr>
       </thead>
 
@@ -19,6 +20,13 @@
           <tr>
             <td><%= link_to events.title, event_path(current_user) %></td>
             <td><%= events.start_time.strftime("%m-%d") %></td>
+            <td>
+              <% if event.record_flg == false %>
+              <font color = "green"><strong>✖️</strong></font>
+              <% else %>
+              <font color = "red"><strong>◯</strong></font>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

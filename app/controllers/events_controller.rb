@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!,except: [:top]
 
   def new
     @event = Event.new
@@ -6,7 +7,7 @@ class EventsController < ApplicationController
 
   def index
     @event = Event.new
-    @events = Event.all
+    @events = Event.all.reverse_order
   end
 
   def create
@@ -26,7 +27,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
-      redirect_to events_path, notice: "編集しました"
+      redirect_to event_path(@event), notice: "編集しました"
     else
       render 'edit'
     end
@@ -41,7 +42,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-        params.require(:event).permit(:title, :start_time, :end_time, :user_id, :body, :genre)
+        params.require(:event).permit(:title, :start_time, :end_time, :user_id, :body, :genre, :record_flg, :reason)
     end
 
 

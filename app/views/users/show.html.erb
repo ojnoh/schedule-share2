@@ -1,17 +1,20 @@
 <div class = "container px-5 px-sm-0">
   <div class = "row">
-    <div class = "col-3">
+    <div class = "col-4">
       <h4>ユーザー情報</h4>
       <%= render 'info', user: current_user %>
     </div>
-    <div class = "col-9">
+    <div class = "col-8">
+
       <h4>カレンダー</h4>
       <%= month_calendar events: @events do |date, events| %>
-        <%= date.day %>
-        <% @events.each do |event| %>
-          <%= event.title, event %>
-        <% end %>
+      <%= date.day %>
+      <% events.each do |events| %>
+        <div>
+          <%= events.title %>
+        </div>
       <% end %>
+    <% end %>
     </div>
   </div>
 </div>

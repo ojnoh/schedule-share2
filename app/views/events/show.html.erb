@@ -3,11 +3,11 @@
     <div class = "col-6">
       <table class = "table table-borderless">
         <tr>
-          <td><strong>開始日時</strong></td>
+          <td>開始日時</td>
           <td><%= @event.start_time %></td>
         </tr>
         <tr>
-          <td><strong>終了日時</strong></td>
+          <td>終了日時</td>
           <td><%= @event.end_time %></td>
         </tr>
         <tr>
@@ -29,21 +29,25 @@
       <table class = "table table-borderless">
         <tr>
           <td>達成の有無</td>
+        </tr>
+        <tr>
           <td><% if @event.record_flg == false %>
               <font color = "green"><strong>達成できなかった</strong></font>
               <% else %>
               <font color = "red"><strong>達成</strong></font>
-              <% end %>></td>
+              <% end %></td>
         </tr>
         <tr>
           <td>達成できなかった理由</td>
+        </tr>
+        <tr>
           <td><%= @event.reason %></td>
         </tr>
       </table>
     </div>
   </div>
   <div>
-    <%= link_to "編集する", edit_user_path(current_user.id), class: "btn btn-success" %>
+    <%= link_to "編集する", edit_event_path(current_user.id), class: "btn btn-success" %>
     <%= link_to '消去', event_path(@event.id), method: :delete, data: { confirm: '本当に?' }, class: "btn btn-danger" %>
     <%= link_to '戻る', events_path, class: "btn btn-primary" %>
   </div>

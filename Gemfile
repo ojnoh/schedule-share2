@@ -87,3 +87,6 @@ end
 
 #シンプルカレンダーダウンロード
 gem 'simple_calendar', '~> 2.0'
+
+#development.rbに記載されたメールアドレスとパスワードを隠すための環境変数ファイル
+gem 'dotenv-rails'

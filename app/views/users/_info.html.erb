@@ -1,12 +1,12 @@
 <table class = "table table-borderless">
   <tr>
-    <td>
-        <%= link_to "編集する", edit_user_path(current_user.id) %>
-    </td>
-    <td></td>
+    <td><%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-success" %></td>
   </tr>
   <tr>
-    <td><%# attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
+    <td><%= link_to "イベント", events_path(current_user.id), class: "btn btn-success" %></td>
+  </tr>
+  <tr>
+    <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
   </tr>
   <tr>
     <td><strong>ニックネーム</strong></td>

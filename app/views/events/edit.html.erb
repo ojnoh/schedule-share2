@@ -1,47 +1,53 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-5">
+    <div class = "col-6">
       <%= form_with model:@event, local:true do |f| %>
-        <table class = "table table-borderless">
-          <tr>
-            <td><strong>開始日時</strong></td>
-            <td><%= f.text_field :start, autofocus: true %></td>
-          </tr>
-          <tr>
-            <td><strong>終了日時</strong></td>
-            <td>終了</td>
-          </tr>
-          <tr>
-            <td>イベント名</td>
-            <td><%= f.text_field :name, autofocus: true, placeholder: "イベント名" %></td>
-          </tr>
-          <tr>
-            <td>ジャンル</td>
-            <td><%= f.select :genre, Event.genres.keys.to_a %></td>
-          </tr>
-          <tr>
-            <td>詳細</td>
-            <td><%= f.text_area :body, autofocus: true, placeholder: "イベント詳細" %></td>
-          </tr>
-        </table>
-      </div>
+      <table class = "table table-borderless">
+        <tr>
+          <td>開始日時</td>
+          <td><%= f.datetime_select :start_time, autofocus: true %></td>
+        </tr>
+        <tr>
+          <td>終了日時</td>
+          <td><%= f.datetime_select :end_time, autofocus: true %></td>
+        </tr>
+        <tr>
+          <td>イベント名</td>
+          <td><%= f.text_field :title, autofocus: true, placeholder: "イベント名" %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= f.select :genre, Event.genres.keys.to_a %></td>
+        </tr>
+        <tr>
+          <td>詳細</td>
+          <td><%= f.text_area :body, autofocus: true, placeholder: "イベント詳細" %></td>
+        </tr>
+      </table>
+    </div>
 
-      <div class = "col-5">
-        <table class = "table table-borderless">
-          <tr>
-            <td>達成の有無</td>
-            <td>
-              <%= f.radio_button :record_flg, "false" %>達成できなかった
+    <div class = "col-5">
+      <table class = "table table-borderless">
+        <tr>
+          <td>達成の有無</td>
+        </tr>
+        <tr>
+          <td><%= f.radio_button :record_flg, "false" %>達成できなかった
               <%= f.radio_button :record_flg, "true" %>達成
-            </td>
-          </tr>
-          <tr>
-            <td>達成できなかった理由</td>
-            <td><%= f.text_area :reason, size: "50x8", autofocus: true %></td>
-          </tr>
-        </table>
-        <%= f.submit "登録する", class: "btn btn-success" %>
+          </td>
+        </tr>
+        <tr>
+          <td>達成できなかった理由</td>
+        </tr>
+        <tr>
+          <td><%= f.text_area :reason, size: "50x8", autofocus: true %></td>
+        </tr>
+      </table>
+      <%= f.submit "登録する", class: "btn btn-success" %>
       <% end %>
     </div>
   </div>
 </div>
+
+
+
