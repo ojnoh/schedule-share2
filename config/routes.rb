@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   resources :users do
     resource :favorites, only: [:create, :destroy]
   end
-  resources :events do
-    resource :favorites, only: [:create, :destroy]
-  end
+  resources :events
 
 end

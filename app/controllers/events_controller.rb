@@ -1,17 +1,14 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!,except: [:top]
-
-  def new
-    @event = Event.new
-  end
+  before_action :authenticate_user!
 
   def index
     @event = Event.new
-    @events = Event.all.reverse_order
+    @events = current_user.events.reverse_order
   end
 
   def create
     @event = Event.new(event_params)
+    @event.user_id = current_user.id
     @event.save
     redirect_to events_path
   end
@@ -29,7 +26,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to event_path(@event), notice: "編集しました"
     else
-      render 'edit'
+      render 'edit', notice: "達成できなかった理由を記載してください"
     end
   end
 

@@ -1,3 +1,4 @@
+<%= flash[:notice] %>
 <div class = "container">
   <div class = "row">
     <div class = "col-6">
@@ -47,7 +48,7 @@
     </div>
   </div>
   <div>
-    <%= link_to "編集する", edit_event_path(current_user.id), class: "btn btn-success" %>
+    <%= link_to "編集/結果入力", edit_event_path(current_user.id), class: "btn btn-success" %>
     <%= link_to '消去', event_path(@event.id), method: :delete, data: { confirm: '本当に?' }, class: "btn btn-danger" %>
     <%= link_to '戻る', events_path, class: "btn btn-primary" %>
   </div>

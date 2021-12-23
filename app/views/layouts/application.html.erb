@@ -8,11 +8,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  
+  
   <body>
     <header>
-
-
       <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
         <div class="container-fluid">
           <%= link_to image_tag("F5A840D1-7AEF-47DF-9207-145B0F682DA0_4_5005_c", size: "150x100"), root_path, class: "mt-2" %>
@@ -37,6 +36,8 @@
          </div>
       </nav>
     </header>
+    
+    
     <%= yield %>
   </body>
 </html>

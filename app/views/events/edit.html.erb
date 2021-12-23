@@ -1,3 +1,4 @@
+<%= flash[:notice] %>
 <div class = "container">
   <div class = "row">
     <div class = "col-6">
@@ -21,12 +22,12 @@
         </tr>
         <tr>
           <td>詳細</td>
-          <td><%= f.text_area :body, autofocus: true, placeholder: "イベント詳細" %></td>
+          <td><%= f.text_area :body, size: "50x8",  autofocus: true, placeholder: "イベント詳細" %></td>
         </tr>
       </table>
     </div>
 
-    <div class = "col-5">
+    <div class = "col-6">
       <table class = "table table-borderless">
         <tr>
           <td>達成の有無</td>
@@ -43,6 +44,8 @@
           <td><%= f.text_area :reason, size: "50x8", autofocus: true %></td>
         </tr>
       </table>
+    </div>
+    <div>
       <%= f.submit "登録する", class: "btn btn-success" %>
       <% end %>
     </div>

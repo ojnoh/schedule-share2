@@ -18,10 +18,10 @@
       <tbody>
         <% @events.each do |events| %>
           <tr>
-            <td><%= link_to events.title, event_path(current_user) %></td>
+            <td><%= link_to events.title, event_path(events.id) %></td>
             <td><%= events.start_time.strftime("%m-%d") %></td>
             <td>
-              <% if event.record_flg == false %>
+              <% if events.record_flg == false %>
               <font color = "green"><strong>✖️</strong></font>
               <% else %>
               <font color = "red"><strong>◯</strong></font>
@@ -34,7 +34,7 @@
 
 
 
-    <%= form_with(model: @event, local: true) do |f| %>
+    <%= form_with(model: @event, url: events_path(current_user, @event), local: true) do |f| %>
 
       <div class = "title">
         <div>タイトル</div>

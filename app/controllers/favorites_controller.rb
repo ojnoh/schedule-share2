@@ -1,16 +1,16 @@
 class FavoritesController < ApplicationController
 
   def create
-    event = Event.find(params[:event_id])
-    favorite = current_user.favorites.new(event_id: event.id)
-    favorite.save
-    redirect_to user_path
+    user = User.find(params[:user_id])
+    favorite = current_user.favorites.new(user_id: user.id)
+    favorite.save!
+    #redirect_to user_path(user)
   end
 
   def destroy
-    event = Event.find(params[:event_id])
-    favorite = current_user.favorites.find_by(event_id: event.id)
+    user = User.find(params[:user_id])
+    favorite = current_user.favorites.find_by(user_id: user.id)
     favorite.destroy
-    redirect_to user_path
+    #redirect_to user_path(user)
   end
 end
