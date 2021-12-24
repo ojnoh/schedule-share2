@@ -10,7 +10,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user_id = current_user.id
     @event.save
-    redirect_to events_path
+    redirect_to events_path, notice: "イベント追加しました"
   end
 
   def show
@@ -26,14 +26,14 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to event_path(@event), notice: "編集しました"
     else
-      render 'edit', notice: "達成できなかった理由を記載してください"
+      render 'edit'
     end
   end
 
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to events_path, notice:"削除しました"
+    redirect_to events_path
   end
 
 
