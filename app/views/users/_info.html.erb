@@ -4,7 +4,7 @@
   </tr>
   <tr>
     <td>
-      <% if @user == current_user %>
+      <% if user == current_user %>
         <%= link_to "イベント入力", events_path, class: "btn btn-success" %>
       <% end %>
     </td>

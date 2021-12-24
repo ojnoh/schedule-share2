@@ -13,7 +13,7 @@
         </tr>
         <tr>
           <td>イベント名</td>
-          <td><%= @event.title %>え</td>
+          <td><%= @event.title %></td>
         </tr>
         <tr>
           <td>ジャンル</td>
@@ -48,7 +48,7 @@
     </div>
   </div>
   <div>
-    <%= link_to "編集/結果入力", edit_event_path(current_user.id), class: "btn btn-success" %>
+    <%= link_to "編集/結果入力", edit_event_path(@event), class: "btn btn-success" %>
     <%= link_to '消去', event_path(@event.id), method: :delete, data: { confirm: '本当に?' }, class: "btn btn-danger" %>
     <%= link_to '戻る', events_path, class: "btn btn-primary" %>
   </div>

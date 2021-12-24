@@ -20,8 +20,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :nickname, presence: true
-  validates :genre, presence: true
-  validates :point, presence: true
+  validates :genre, presence: true, on: :update
+  validates :point, presence: true, on: :update
   validates :email, presence: true
 
 end

@@ -3,13 +3,15 @@
 <h1>カレンダー</h1>
 <br>
 
+
+<!-- ページ左側のイベント表 -->
 <div class = "row">
   <div class = "col-md-4">
   	<div>今後の予定一覧</div>
     <table class = "table">
       <thead class = "thead-light">
         <tr>
-          <th>タイトル</th>
+          <th>タイトル（カレンダーに表示される）</th>
           <th>日程</th>
           <th>達成</th>
         </tr>
@@ -22,7 +24,7 @@
             <td><%= events.start_time.strftime("%m-%d") %></td>
             <td>
               <% if events.record_flg == false %>
-              <font color = "green"><strong>✖️</strong></font>
+              <font><strong>✖️</strong></font>
               <% else %>
               <font color = "red"><strong>◯</strong></font>
               <% end %>
@@ -70,14 +72,14 @@
   <br>
   <br>
 
-
+    <!-- 画面右側のカレンダー表示 -->
     <div class="col-md-8">
     <%= month_calendar events: @events do |date, events| %>
       <%= date.day %>
 
       <% events.each do |events| %>
         <div>
-          <%= link_to events.title, class: "btn btn-success"%>
+          <%= link_to events.title,event_path(events) %>
         </div>
       <% end %>
     <% end %>

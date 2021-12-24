@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    #検索フォームが空の場合前表示
+    #検索フォームが空の場合全表示
     if (params[:search] == nil || params[:search] == '')
       @users= User.all
     else
