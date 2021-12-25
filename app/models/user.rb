@@ -5,10 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :events, dependent: :destroy
+  
+  #いいねした人を持ってきている
   has_many :favorites, dependent: :destroy
+  
+  #いいねしてくれた人をfavoriteの中のfavorite_user_idを軸に持ってきている
+  has_many :favorite_users, class_name: 'Favorite', foreign_key: 'favorite_user_id'
+
 
   def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
+    favorites.where(favorite_user_id: user.id).exists?
   end
 
   attachment :profile_image

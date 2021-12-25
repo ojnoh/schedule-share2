@@ -17,7 +17,7 @@
             <th>画像</th>
             <th>ニックネーム</th>
             <th>ジャンル</th>
-            <th></th>
+            <th>いいねされた数</th>
             <th></th>
           </tr>
         </thead>
@@ -28,8 +28,8 @@
             <td><%= attachment_image_tag users, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
             <td><%= users.nickname %></td>
             <td><%= users.genre %></td>
-            <td><%= users.favorites.count %> いいね</td>
-            <td><%= link_to "ユーザーページ", user_path(users.id), class: "btn btn-success" %></td>
+            <td><%= users.favorite_users.count %> いいね</td>
+            <td><%= link_to "詳細ページ", user_path(users.id), class: "btn btn-success" %></td>
           </tr>
           <% end %>
         </tbody>
