@@ -1,39 +1,48 @@
-<h2>新規登録</h2>
+<div class = "text-center">
+  <h2>新規登録</h2>
 
-<%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-   <div class="field">
-    名前<br />
-    <%= f.text_field :name, autofocus: true %>
-   </div>
+     <div class="field">
+      名前<br />
+      <i class="fas fa-user"></i>
+      <%= f.text_field :name, autofocus: true %>
+     </div>
 
-   <div class="field">
-    ニックネーム<br />
-    <%= f.text_field :nickname, autofocus: true %>
-   </div>
+     <div class="field">
+      ニックネーム<br />
+      <i class="fas fa-users"></i>
+      <%= f.text_field :nickname, autofocus: true %>
+     </div>
 
-  <div class="field">
-    メールアドレス<br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      メールアドレス<br />
+      <i class="far fa-envelope"></i>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    パスワード
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      パスワード
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> 文字以上)</em>
+      <% end %><br />
+      <i class="fas fa-key"></i>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field">
-    パスワード（確認）<br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      パスワード（確認）<br />
+      <i class="fas fa-key"></i>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-success" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "登録", class: "btn btn-success" %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="actions">
+      すでに会員登録がお住みにかたは<%= link_to "こちら", new_user_session_path %>
+    </div>
+  <% end %>
+</div>
