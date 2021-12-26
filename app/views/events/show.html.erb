@@ -1,0 +1,55 @@
+<%= flash[:notice] %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-6">
+      <table class = "table table-borderless">
+        <tr>
+          <td>開始日時</td>
+          <td><%= @event.start_time %></td>
+        </tr>
+        <tr>
+          <td>終了日時</td>
+          <td><%= @event.end_time %></td>
+        </tr>
+        <tr>
+          <td>イベント名</td>
+          <td><%= @event.title %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= @event.genre %></td>
+        </tr>
+        <tr>
+          <td>目標</td>
+          <td><%= @event.body %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class = "col-5">
+      <table class = "table table-borderless">
+        <tr>
+          <td>達成の有無</td>
+        </tr>
+        <tr>
+          <td><% if @event.record_flg == false %>
+              <font><strong>達成できなかった</strong></font>
+              <% else %>
+              <font color = "red"><strong>達成</strong></font>
+              <% end %></td>
+        </tr>
+        <tr>
+          <td>達成できなかった理由</td>
+        </tr>
+        <tr>
+          <td><%= @event.reason %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div>
+    <%= link_to "編集/結果入力", edit_event_path(@event), class: "btn btn-success" %>
+    <%= link_to '消去', event_path(@event.id), method: :delete, data: { confirm: '本当に?' }, class: "btn btn-danger" %>
+    <%= link_to '戻る', events_path, class: "btn btn-primary" %>
+  </div>
+</div>

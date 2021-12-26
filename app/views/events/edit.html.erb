@@ -1,0 +1,61 @@
+<% if @event.errors.any? %>
+  <%= @event.errors.count %>件のエラーが発生しました
+  <% @event.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-6">
+      <%= form_with model:@event, local:true do |f| %>
+      <table class = "table table-borderless">
+        <tr>
+          <td>開始日時</td>
+          <td><%= f.datetime_select :start_time, autofocus: true %></td>
+        </tr>
+        <tr>
+          <td>終了日時</td>
+          <td><%= f.datetime_select :end_time, autofocus: true %></td>
+        </tr>
+        <tr>
+          <td>イベント名</td>
+          <td><%= f.text_field :title, autofocus: true, placeholder: "イベント名" %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= f.select :genre, Event.genres.keys.to_a %></td>
+        </tr>
+        <tr>
+          <td>目標</td>
+          <td><%= f.text_area :body, size: "50x8",  autofocus: true, placeholder: "イベント詳細" %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class = "col-6">
+      <table class = "table table-borderless">
+        <tr>
+          <td>達成の有無</td>
+        </tr>
+        <tr>
+          <td><%= f.radio_button :record_flg, "false" %>達成できなかった
+              <%= f.radio_button :record_flg, "true" %>達成
+          </td>
+        </tr>
+        <tr>
+          <td>達成できなかった理由</td>
+        </tr>
+        <tr>
+          <td><%= f.text_area :reason, size: "50x8", autofocus: true %></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <%= f.submit "登録する", class: "btn btn-success" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
