@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 2021_12_25_042504) do
     t.integer "genre"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.boolean "record_flg", default: false, null: false
     t.text "reason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.boolean "record_flg", default: false, null: false
   end
 
   create_table "favorites", force: :cascade do |t|

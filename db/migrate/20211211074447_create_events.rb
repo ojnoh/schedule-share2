@@ -7,7 +7,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.boolean :disp_flg
       t.datetime :start
       t.datetime :end
-      t.boolean :record_flg
+      t.boolean :record_flg, default: false, null: false
       t.text :reason
 
       t.timestamps
